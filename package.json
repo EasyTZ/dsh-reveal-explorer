@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-reveal-explorer",
+  "name": "dsh-reveal-explorer",
   "version": "0.1.0",
   "description": "Open the current session's workspace directory in the system file manager",
   "type": "module",
