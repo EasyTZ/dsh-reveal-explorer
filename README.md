@@ -5,30 +5,39 @@
 ## 前置要求
 
 - dsh `>= 0.1.1-rc.2`（peer 依赖：`@deepseek-ai/cordis ^4.0.1`、`@deepseek-ai/dsh-host-webserver ^0.1.1-rc.2`、`@deepseek-ai/dsh-workspace ^0.1.1-rc.2`）
+- `pnpm` 可用（`dsh plugin` 底层转发给 pnpm）
 
 ## 安装
 
-「装进去」和「打开它」是两件事，缺一不可：
+一条命令装完：
 
 ```sh
-dsh plugin --profile <name> add github:EasyTZ/dsh-reveal-explorer#v0.1.1
+dsh plugin --profile <name> add github:EasyTZ/dsh-reveal-explorer#v0.2.1
 ```
 
-> **必须写 GitHub 地址，不能只写包名。** `dsh plugin add` 会把参数原样转给 pnpm，只写 `dsh-reveal-explorer` 会去 npm registry 找同名包 —— 那可能是别人的包（`dsh-git` 在 npm 上就已被他人占用）。换个 tag 就是换版本；想跟最新可以用 `#main`，但**不建议**：钉 tag 才能复现。
+`<name>` 换成你的 profile 名（桌面版通常为 `web`，TUI 为 `tui`）。插件自带 `dsh.bundle` 层（`cordis.patch.yml`），`dsh plugin add` 会同时完成「装进去」和「注册激活」，**不需要再手写 patch**。
 
-## 激活
-
-往 patch 层文件（`$DSH_HOME/profiles/<name>/cordis.patch.yml` 或机器级 `$DSH_HOME/cordis.patch.yml`）里加一条 `- insert:` 条目：
-
-```yaml
-- insert:
-    - id: dsh-reveal-explorer
-      name: 'dsh-reveal-explorer'
-```
-
-> **`id` 别用通用词**（比如 `reveal-explorer`）。`- insert:` 不去重：一旦与 dsh 自带 bundle 里某条条目同名，cordis loader 会抛 `duplicate loader entry id`，**内核直接退出**。dsh 自带的 id 里有大量 `git` / `session` / `settings` / `storage` 这类通用词，而且内核会自行更新到新版本 —— 撞车只是时间问题。直接拿包名当 id 最省事。
+> 命令里的 `#v0.2.1` 是版本 tag，钉 tag 才能复现；想追最新可以改成 `#main`，但不建议。
 
 重启 dsh 后，会话头部的工具区会出现「在资源管理器中打开」按钮。
+
+## 使用
+
+点击会话头部工具区的「在资源管理器中打开」按钮，会用系统文件管理器打开当前会话的工作区目录。
+
+## 卸载
+
+一条命令卸载：
+
+```sh
+dsh plugin --profile <name> remove @easytz/dsh-reveal-explorer
+```
+
+`<name>` 与安装时一致。`remove` 会把包从 profile 依赖里移除，`dsh` 随后会把它从激活清单（`dsh.profile.bundles`）里撤掉。
+
+> 如果你按旧版 README 手动往 `$DSH_HOME/profiles/<name>/cordis.patch.yml` 或 `$DSH_HOME/cordis.patch.yml` 里加过 `- insert:` 条目，卸载时把那段 YAML 一起删掉。
+
+重启 dsh 后，按钮消失。
 
 ## 已知限制
 
