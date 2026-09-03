@@ -1,6 +1,6 @@
 {
   "name": "@easytz/dsh-reveal-explorer",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "在系统文件管理器中打开当前会话的工作区目录（Open the current session's workspace directory in the system file manager）",
   "type": "module",
   "main": "lib/index.js",
