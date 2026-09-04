@@ -1,7 +1,7 @@
 {
   "name": "@easytz/dsh-reveal-explorer",
-  "version": "0.2.2",
-  "description": "在系统文件管理器中打开当前会话的工作区目录（Open the current session's workspace directory in the system file manager）",
+  "version": "0.2.3",
+  "description": "会话头部一个按钮，用系统文件管理器打开当前工作区目录。One button in the session header to open the current workspace in your system file manager.",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
