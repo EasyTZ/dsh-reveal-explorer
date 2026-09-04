@@ -5,9 +5,12 @@
 
 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（下称 dsh）的第三方插件。聊到一半想去看看文件、拖个东西进去、或者在编辑器里打开某个文件时，不用再去翻路径手动 `cd`。
 
+<details open>
+<summary><b>中文</b></summary>
+
 ## 前置要求
 
-- dsh `>= 0.1.1-rc.2`（peer 依赖：`@deepseek-ai/cordis ^4.0.1`、`@deepseek-ai/dsh-host-webserver ^0.1.1-rc.2`、`@deepseek-ai/dsh-workspace ^0.1.1-rc.2`）
+- dsh `>= 0.1.1-rc.2`
 - `pnpm` 可用（`dsh plugin` 底层转发给 pnpm）
 
 ## 安装
@@ -55,9 +58,10 @@ dsh plugin --profile <name> remove @easytz/dsh-reveal-explorer
 
 目前只在 Windows（`explorer.exe`）上验证过；macOS（`open`）与 Linux（`xdg-open`）的分支已写好但未实测，欢迎反馈。
 
----
+</details>
 
-## English
+<details>
+<summary><b>English</b></summary>
 
 A third-party plugin for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (dsh): adds a button to the session header that opens the current workspace directory in your system file manager.
 
@@ -95,6 +99,8 @@ dsh plugin --profile <name> remove @easytz/dsh-reveal-explorer
 - If the workspace directory is moved or deleted after registration, the plugin detects it up front and says so.
 - On Windows `explorer.exe` can return a non-zero exit code even when the window did open; the plugin tolerates that (only a failure to spawn counts as an error).
 - Verified on Windows only; the macOS and Linux paths are written but untested. Feedback welcome.
+
+</details>
 
 ## 许可证 / License
 
