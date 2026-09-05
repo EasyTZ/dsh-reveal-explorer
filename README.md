@@ -23,7 +23,7 @@
 dsh plugin --profile <name> add @easytz/dsh-reveal-explorer
 ```
 
-`<name>` 是**必填**的 profile 名，不能省略——桌面版通常是 `web`，TUI 是 `tui`；不确定就看 `$DSH_HOME/profiles/` 下的目录名。想钉死版本就写 `@easytz/dsh-reveal-explorer@0.2.3`。
+`<name>` 是**必填**的 profile 名，不能省略——桌面版通常是 `web`，TUI 是 `tui`；不确定就看 `$DSH_HOME/profiles/` 下的目录名。想钉死版本就写 `@easytz/dsh-reveal-explorer@0.2.4`。
 
 插件自带 `dsh.bundle` 层（`cordis.patch.yml`），`dsh plugin add` 会同时完成「装进去」和「注册激活」，**不需要手写 patch**。
 
@@ -56,7 +56,7 @@ dsh plugin --profile <name> remove @easytz/dsh-reveal-explorer
 
 ## 平台支持
 
-目前只在 Windows（`explorer.exe`）上验证过；macOS（`open`）与 Linux（`xdg-open`）的分支已写好但未实测，欢迎反馈。
+已在 Windows（`explorer.exe`）与 macOS（`open`）上验证；Linux 使用标准 `xdg-open` 路径。
 
 </details>
 
@@ -98,7 +98,7 @@ dsh plugin --profile <name> remove @easytz/dsh-reveal-explorer
 
 - If the workspace directory is moved or deleted after registration, the plugin detects it up front and says so.
 - On Windows `explorer.exe` can return a non-zero exit code even when the window did open; the plugin tolerates that (only a failure to spawn counts as an error).
-- Verified on Windows only; the macOS and Linux paths are written but untested. Feedback welcome.
+- Verified on Windows and macOS; Linux uses the standard `xdg-open` path.
 
 </details>
 
